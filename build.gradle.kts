@@ -1,24 +1,20 @@
-plugins {
-    idea
-    java
-    `java-library`
-    maven
-    kotlin("jvm") version "1.3.41"
+tasks.wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = "5.5.1"
 }
 
-allprojects {
-    group = "org.k9rosie.teampvp"
-    version = "1.0-SNAPSHOT"
+subprojects {
+    apply(plugin="java-library")
+    apply(plugin="maven")
+
     repositories {
         maven {
             url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
         }
         mavenCentral()
-
     }
 
     dependencies {
-        "core"("org.bukkit:bukkit:1.14.3-pre4-SNAPSHOT")
-        "implementation"(kotlin("stdlib"))
+        "api"("org.bukkit:bukkit:1.14.3-pre4-SNAPSHOT")
     }
 }

@@ -1,3 +1,4 @@
-include("core", "core")
+include("api")
+include("core")
 
 rootProject.name = "teampvp"
