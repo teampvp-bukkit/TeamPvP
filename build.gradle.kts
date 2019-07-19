@@ -1,11 +1,15 @@
-tasks.wrapper {
-    distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = "5.5.1"
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+    kotlin("jvm") version "1.3.41"
 }
 
-subprojects {
+allprojects {
     apply(plugin="java-library")
     apply(plugin="maven")
+
+    group = "com.k9rosie.teampvp"
+    version = "1.0-SNAPSHOT"
 
     repositories {
         maven {
@@ -17,4 +21,18 @@ subprojects {
     dependencies {
         "api"("org.bukkit:bukkit:1.14.3-pre4-SNAPSHOT")
     }
+}
+
+dependencies {
+    "implementation"(kotlin("stdlib-jdk8"))
+    "api"(project(":api"))
+}
+
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }

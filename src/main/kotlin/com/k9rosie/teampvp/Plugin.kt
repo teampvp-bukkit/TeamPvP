@@ -1,4 +1,4 @@
-package com.k9rosie.teampvp.core;
+package com.k9rosie.teampvp;
 
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
