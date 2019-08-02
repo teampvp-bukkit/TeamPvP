@@ -1,31 +1,24 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    `java-library`
+    maven
     kotlin("jvm") version "1.3.41"
 }
 
-allprojects {
-    apply(plugin="java-library")
-    apply(plugin="maven")
+    
+version = "1.0-SNAPSHOT"
 
-    group = "com.k9rosie.teampvp"
-    version = "1.0-SNAPSHOT"
-
-    repositories {
-        maven {
-            url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-        }
-        mavenCentral()
+repositories {
+    maven {
+        url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     }
-
-    dependencies {
-        "api"("org.bukkit:bukkit:1.14.3-pre4-SNAPSHOT")
-    }
+    mavenCentral()
 }
 
 dependencies {
+    "api"("org.bukkit:bukkit:1.14.3-pre4-SNAPSHOT")
     "implementation"(kotlin("stdlib-jdk8"))
-    "api"(project(":api"))
 }
 
 val compileKotlin: KotlinCompile by tasks
