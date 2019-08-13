@@ -1,0 +1,105 @@
+# enables debug messages in the server console
+# if you are having problems with the plugin, then enable this setting and shoot k9rosie a message with your logs
+debug: false
+
+# for advanced users only.
+# these settings should be left alone unless you know what you're doing
+database:
+  # can be any registered JDBC driver
+  connector: sqlite
+
+  # (for sqlite) the path to the db file, just in case.
+  # generally you don't need to change this
+  path: plugins/teampvp/teampvp.db
+
+  # table prefixes
+  prefix: tpvp_
+
+  # how often data is flushed to the server
+  flush_interval: 60
+
+  # if your JDBC driver is anything other than sqlite (like mysql) then use these settings to connect and authenticate with the database
+  remote:
+    url: "//localhost:3306/database"
+    # if necessary, environment variables should be encapsulated with ${...}
+    username: example_username
+    password: ${PASSWORD}
+
+world:
+  # list of worlds recognized by TeamPvP
+  # ALL WORLDS LISTED HERE **MUST** BE DEFINED IN worlds.yml!!
+  enabled:
+    - world_nether
+    - world_the_end
+
+  # this is the world where players will spawn when they first join the game
+  lobby: world
+
+  # enables map voting
+  voting:
+    enabled: true
+
+
+game:
+  # minimum num of players to start the game
+  minimum_players: 3
+
+  # the difference in team sizes necessary to trigger a re-balance. Set to 0 to turn off team re-balancing
+  largest_team_imbalance: 4
+
+  # the amount of time in seconds players are given after being warned that a team rebalance will occur
+  rebalance_warning_timer: 5
+
+  # whether or not players can join a game once it has started
+  join_in_progress: false
+
+  # the amount in seconds players will be forced to stay in their team's base before the game begins
+  pre_game_timer: 120
+
+  # the amount in seconds players will be forced to stay in their team's base after the game ends
+  post_game_timer: 120
+
+  # the amount in seconds that players will wait before respawning
+  # set to 0 for instant respawn
+  # it is possible for gamemodes to override this value
+  respawn_timer: 5
+
+  # enable/disable hunger
+  enable_hunger: false
+
+  # disable/enable health regen
+  health_regen: false
+
+  # the amount in seconds that players have after attacking another player to be counted as an assist kill
+  assist_timer: 5
+
+effects:
+  # effects that are played on a player's death
+  # if you don't want particles/sounds to spawn then leave the type value blank
+  death:
+    particle:
+      # the name of the particle (as defined here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Particle.html)
+      type: SMOKE_NORMAL
+
+      # number of particles spawned
+      count: 10
+
+    sound:
+      # the name of the sound (as defined here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html)
+      type: ENTITY_VILLAGER_DEATH
+
+      # any value between 0 and 1
+      volume: 1
+
+      # any value between 0 and 2
+      pitch: 1
+
+  # effects that are played when a player spawns
+  respawn:
+    particle:
+      type: VILLAGER_HAPPY
+      count: 50
+    sound:
+      type: ENTITY_PLAYER_LEVELUP
+      volume: 1
+      pitch: 1

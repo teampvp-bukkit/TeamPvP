@@ -5,6 +5,9 @@ import org.bukkit.command.CommandSender
 import org.bukkit.command.CommandExecutor as BukkitCmdExec
 
 object CommandExecutor : BukkitCmdExec {
+    companion object {
+        val commands
+    }
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         var command = Command(sender, args)

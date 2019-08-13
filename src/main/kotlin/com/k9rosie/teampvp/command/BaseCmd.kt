@@ -30,7 +30,7 @@ class BaseCmd(sender: CommandSender, val subcommand: String = "") : Command(send
             - vote map_num | map_name
         """.trimIndent()
 
-    override fun execute(): Boolean {
+    override fun execute(sender: CommandSender, vararg args: String): Boolean {
 
     }
 }
