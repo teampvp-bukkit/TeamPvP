@@ -4,6 +4,7 @@ plugins {
     `java-library`
     maven
     kotlin("jvm") version "1.3.41"
+    id("com.github.johnrengelman.shadow") version "5.1.0"
 }
 
     
@@ -14,10 +15,13 @@ repositories {
         url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     }
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     "api"("org.bukkit:bukkit:1.14.3-pre4-SNAPSHOT")
+    "api"("com.zaxxer:HikariCP:3.3.1")
+    "api"("org.jetbrains.exposed:exposed:0.16.1")
     "implementation"(kotlin("stdlib-jdk8"))
 }
 

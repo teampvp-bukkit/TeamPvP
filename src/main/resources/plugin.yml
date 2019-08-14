@@ -1,3 +1,31 @@
 name: TeamPvP
 version: 1.0-SNAPSHOT
-main: Plugin
+main: com.k9rosie.teampvp.Plugin
+author: k9rosie
+
+commands:
+  pvp:
+    description: Base TeamPvP command
+    usage: /pvp [subcommand]
+    permission: teampvp.cmd
+
+permissions:
+  teampvp.*:
+    description: Gives access to all TeamPvP permissions
+    children:
+      teampvp.cmd: true
+    default: op
+
+  teampvp.command:
+    description: Gives access to base TeamPvP permission
+    default: true
+
+  teampvp.command.*:
+    description: Gives access to all TeamPvP commands
+    default: op
+    children:
+      teampvp.command.test: true
+
+  teampvp.command.test:
+    description: Test command
+    default: true

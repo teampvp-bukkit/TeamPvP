@@ -1,4 +1,3 @@
-package com.k9rosie.teampvp
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player as BukkitPlayer
 

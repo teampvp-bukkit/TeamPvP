@@ -3,26 +3,28 @@ package com.k9rosie.teampvp.command
 import com.k9rosie.teampvp.ErrorCode
 import org.bukkit.command.CommandSender
 
-object BaseCmd: Command() {
+object TestCmd : Command() {
     override val description: String
-        get() = "Base TeamPvP command"
+        get() = "A test command"
 
     override val helpText: String
-        get() = "dude weed lmao"
+        get() = "It's just a test command dude"
 
     override val params: Array<Pair<String, Boolean>>
         get() = arrayOf(
-            Pair("subcommand", false)
+            Pair("foo", true),
+            Pair("bar", true),
+            Pair("baz", false)
         )
 
     override val permission: String
-        get() = "teampvp.cmd"
+        get() = "novswar.cmd.test"
 
     override val playerOnly: Boolean
         get() = false
 
     override fun execute(sender: CommandSender, args: Map<String, String>): ErrorCode {
-        sender.sendMessage("whaddup")
+        sender.sendMessage("${args["foo"]} ${args["bar"]} ${args["baz"]}")
         return ErrorCode.COMMAND_SUCCESS
     }
 }

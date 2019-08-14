@@ -5,25 +5,24 @@ debug: false
 # for advanced users only.
 # these settings should be left alone unless you know what you're doing
 database:
-  # can be any registered JDBC driver
+  # TeamPvP uses HikariCP, so if you need to change this setting refer to this:
+  # https://github.com/brettwooldridge/HikariCP#popular-datasource-class-names
+  # if you don't know what any of this means, don't change this setting
   connector: sqlite
 
-  # (for sqlite) the path to the db file, just in case.
-  # generally you don't need to change this
-  path: plugins/teampvp/teampvp.db
+  # if you are using a remote database, you'll need to change this to a JDBC compliant url
+  # for example: "//localhost:3306/database" (for mysql databases)
+  # consult your database's documentation for more info
+  url: plugins/teampvp/teampvp.db
 
   # table prefixes
   prefix: tpvp_
 
-  # how often data is flushed to the server
-  flush_interval: 60
-
-  # if your JDBC driver is anything other than sqlite (like mysql) then use these settings to connect and authenticate with the database
+  # change these settings if you need to authenticate with the database
   remote:
-    url: "//localhost:3306/database"
-    # if necessary, environment variables should be encapsulated with ${...}
+    # if necessary, environment variables should be encapsulated with $[...]
     username: example_username
-    password: ${PASSWORD}
+    password: $[PASSWORD]
 
 world:
   # list of worlds recognized by TeamPvP
