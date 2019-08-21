@@ -1,21 +1,20 @@
-package com.k9rosie.teampvp;
+package com.k9rosie.teampvp
 
 import com.k9rosie.teampvp.command.CommandExecutor
 import com.k9rosie.teampvp.config.CoreCfg
-import com.k9rosie.teampvp.models.Player
+import com.k9rosie.teampvp.listeners.PlayerListener
+import com.k9rosie.teampvp.player.Player
+import com.k9rosie.teampvp.world.World
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.transactions.transaction
 
 class Plugin : JavaPlugin() {
     companion object {
         var instance: Plugin? = null
-        private set;
+        private set
     }
 
     override fun onEnable() {
@@ -35,9 +34,9 @@ class Plugin : JavaPlugin() {
         }
 
         Database.connect(HikariDataSource(hikariConfig))
-
         getCommand("pvp")?.setExecutor(CommandExecutor)
+        server.pluginManager.registerEvents(PlayerListener, this)
+        World.create("world", Bukkit.getWorld("world") ?: error("no world named world"))
+        Player.Companion // initialize companion object before first player joins the game
     }
-
-
 }

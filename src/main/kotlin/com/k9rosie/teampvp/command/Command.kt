@@ -23,7 +23,6 @@ abstract class Command {
 
         // check if all required params are satisfied
         for (pair in params) {
-            sender.sendMessage(pair.first)
             if (argMap[pair.first] == null && pair.second) return ErrorCode.COMMAND_REQUIRED_ARGS
         }
 

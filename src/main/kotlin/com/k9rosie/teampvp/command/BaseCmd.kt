@@ -3,7 +3,7 @@ package com.k9rosie.teampvp.command
 import com.k9rosie.teampvp.ErrorCode
 import org.bukkit.command.CommandSender
 
-object BaseCmd: Command() {
+object BaseCmd : Command() {
     override val description: String
         get() = "Base TeamPvP command"
 

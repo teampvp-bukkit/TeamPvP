@@ -13,6 +13,8 @@ object CommandExecutor : BukkitCmdExec {
 
         when (args[0]) {
             "test" -> code = TestCmd.prepare(sender, args.drop(1).toTypedArray())
+            "set_region" -> code = SetRegionCmd.prepare(sender, args.drop(1).toTypedArray())
+            "revert_region" -> code = RevertRegionCmd.prepare(sender, args.drop(1).toTypedArray())
         }
 
         if (code != ErrorCode.COMMAND_SUCCESS) sender.sendMessage(code.errTxt)

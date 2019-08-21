@@ -1,7 +1,6 @@
 package com.k9rosie.teampvp.config
 
 import com.k9rosie.teampvp.Plugin
-import org.bukkit.Bukkit
 import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
 import java.io.InputStreamReader

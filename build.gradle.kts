@@ -5,9 +5,9 @@ plugins {
     maven
     kotlin("jvm") version "1.3.41"
     id("com.github.johnrengelman.shadow") version "5.1.0"
+    id("org.jlleitschuh.gradle.ktlint") version "8.2.0"
 }
 
-    
 version = "1.0-SNAPSHOT"
 
 repositories {

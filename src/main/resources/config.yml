@@ -15,9 +15,6 @@ database:
   # consult your database's documentation for more info
   url: plugins/teampvp/teampvp.db
 
-  # table prefixes
-  prefix: tpvp_
-
   # change these settings if you need to authenticate with the database
   remote:
     # if necessary, environment variables should be encapsulated with $[...]
