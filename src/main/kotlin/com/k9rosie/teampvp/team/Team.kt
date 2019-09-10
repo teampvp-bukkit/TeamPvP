@@ -1,5 +1,6 @@
 package com.k9rosie.teampvp.team
 
+import com.k9rosie.teampvp.config.TeamCfg
 import org.bukkit.ChatColor
 
 class Team(
@@ -10,9 +11,22 @@ class Team(
     val friendlyFire: Boolean
 ) {
     companion object {
-        val teams = hashMapOf<String, Team>()
+        val all = hashMapOf<String, Team>()
+
+        init {
+            TeamCfg.teams.forEach {
+                create(
+                    it["name"] as String,
+                    ChatColor.valueOf(it["color"] as String),
+                    it["can_be_damaged"] as Boolean,
+                    it["can_attack"] as Boolean,
+                    it["friendly_fire"] as Boolean
+                )
+            }
+        }
+
         // the default team is the team players are assigned to before they join the game
-        // this team does not have a team state
+        // this team does not have a team state!
         var defaultTeam = create()
 
         fun create(
@@ -23,10 +37,11 @@ class Team(
             friendlyFire: Boolean = false
         ): Team {
             val new = Team(name, color, canAttack, canBeHurt, friendlyFire)
-            teams[name] = new
+            all[name] = new
             return new
         }
     }
 
+    // team states do not get initialized and assigned until the team is actually a member of the game
     var teamState: TeamState? = null
 }

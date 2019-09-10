@@ -23,7 +23,7 @@ object RevertRegionCmd : Command() {
         get() = true
 
     override fun execute(sender: CommandSender, args: Map<String, String>): ErrorCode {
-        val world = World.worlds["world"]
+        val world = World.all["world"]
         val region = world?.regions?.get(args["region_name"])
         if (region != null) {
             sender.sendMessage("Reverting ${region.blocks.size} blocks")

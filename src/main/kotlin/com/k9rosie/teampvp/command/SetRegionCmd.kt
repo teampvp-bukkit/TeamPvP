@@ -1,12 +1,10 @@
 package com.k9rosie.teampvp.command
 
 import com.k9rosie.teampvp.ErrorCode
-import com.k9rosie.teampvp.events.PlayerInteract
 import com.k9rosie.teampvp.player.Player
 import com.k9rosie.teampvp.world.Region
 import com.k9rosie.teampvp.world.World
 import org.bukkit.command.CommandSender
-import org.bukkit.event.block.Action
 import org.bukkit.entity.Player as BukkitPlayer
 
 object SetRegionCmd : Command() {
@@ -28,11 +26,11 @@ object SetRegionCmd : Command() {
     override val playerOnly: Boolean
         get() = true
 
-    init {
+    /*init {
         // event code for setting the region
         PlayerInteract on {
             val bukkitPlayer = it.event.player
-            val player = Player.players[bukkitPlayer] ?: error("player does not exist in list")
+            val player = Player.all[bukkitPlayer] ?: error("player does not exist in list")
             if (it.event.action == Action.LEFT_CLICK_BLOCK && it.event.clickedBlock != null
                 && player.flags["settingRegion"] != null) {
                 val region = player.flags["settingRegion"] as Region
@@ -50,14 +48,14 @@ object SetRegionCmd : Command() {
                 it.event.isCancelled = true
             }
         }
-    }
+    }*/
 
     override fun execute(sender: CommandSender, args: Map<String, String>): ErrorCode {
         val name = args["region_name"] ?: error("region name was not included in args list")
         val regionType = Region.RegionType.valueOf(args["region_type"]?.toUpperCase() ?: return ErrorCode.REGION_TYPE_NONEXISTENT)
 
-        val player = Player.players[sender as BukkitPlayer] ?: error("player does not exist in list")
-        val world = World.worlds[player.bukkitPlayer.world.name] ?: error("world does not exist in list")
+        val player = Player.all[sender as BukkitPlayer] ?: error("player does not exist in list")
+        val world = World.all[player.bukkitPlayer.world.name] ?: error("world does not exist in list")
         val region = Region(name, regionType, null, null)
         world.regions[name] = region
 
