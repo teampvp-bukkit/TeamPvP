@@ -1,10 +1,10 @@
-package com.k9rosie.teampvp.event
+package com.k9rosie.teampvp.listeners
 
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerJoinEvent
 
-object PlayerEvents : Listener {
+object PlayerListener : Listener {
     fun onJoin(event: PlayerJoinEvent) {
     }
 

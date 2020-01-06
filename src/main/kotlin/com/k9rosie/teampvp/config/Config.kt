@@ -8,12 +8,13 @@ import java.io.InputStreamReader
 abstract class Config(private val name: String) {
 
     private val file = File(Plugin.instance?.dataFolder, name)
-    var config: YamlConfiguration = YamlConfiguration.loadConfiguration(file)
+    lateinit var config: YamlConfiguration
 
-    init { reload() }
+    init {
+        load()
+    }
 
-    fun reload() {
-        save()
+    fun load() {
         config = YamlConfiguration.loadConfiguration(file)
 
         // load our defaults from the jar into memory as a reference, in case some values are missing or invalid
@@ -21,5 +22,5 @@ abstract class Config(private val name: String) {
         config.setDefaults(default)
     }
 
-    fun save() = if (file.isFile) config.save(file) else Plugin.instance?.saveResource(name, false)
+    fun save() { if (file.isFile) config.save(file) else Plugin.instance?.saveResource(name, false)}
 }
