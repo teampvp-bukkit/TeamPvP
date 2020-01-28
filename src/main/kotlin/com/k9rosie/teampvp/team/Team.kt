@@ -43,5 +43,5 @@ class Team(
     }
 
     // team states do not get initialized and assigned until the team is actually a member of the game
-    var teamState: TeamState? = null
+    var state: TeamState? = null
 }

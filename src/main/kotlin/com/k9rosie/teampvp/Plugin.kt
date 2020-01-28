@@ -5,17 +5,15 @@ import com.k9rosie.teampvp.config.CoreCfg
 import com.k9rosie.teampvp.events.InitEvent
 import com.k9rosie.teampvp.game.Gamemode
 import com.k9rosie.teampvp.listeners.PlayerListener
+import com.k9rosie.teampvp.util.RepeatingTask
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import org.jetbrains.exposed.sql.Database
 
 class Plugin : JavaPlugin() {
     companion object {
-        var instance: Plugin? = null
-            private set
-
+        lateinit var instance: Plugin
         val gamemodes: Map<String, Gamemode> = hashMapOf()
     }
 
@@ -38,5 +36,9 @@ class Plugin : JavaPlugin() {
 
         getCommand("pvp")?.setExecutor(CommandExecutor)
         server.pluginManager.registerEvents(PlayerListener, this)
+
+        val testTimer = RepeatingTask(20) {
+            print("test")
+        }
     }
 }

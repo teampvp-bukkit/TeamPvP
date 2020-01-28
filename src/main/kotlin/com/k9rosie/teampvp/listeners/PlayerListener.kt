@@ -9,5 +9,6 @@ object PlayerListener : Listener {
     }
 
     fun onInteract(event: PlayerInteractEvent) {
+
     }
 }

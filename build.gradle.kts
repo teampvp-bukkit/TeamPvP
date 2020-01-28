@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    "api"("org.bukkit:bukkit:1.14.3-pre4-SNAPSHOT")
+    "api"("org.bukkit:bukkit:1.15.2-R0.1-SNAPSHOT")
     "api"("com.zaxxer:HikariCP:3.3.1")
     "api"("org.jetbrains.exposed:exposed:0.16.1")
     "implementation"(kotlin("stdlib-jdk8"))
