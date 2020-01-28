@@ -3,6 +3,7 @@ package com.k9rosie.teampvp
 import com.k9rosie.teampvp.command.CommandExecutor
 import com.k9rosie.teampvp.config.CoreCfg
 import com.k9rosie.teampvp.events.InitEvent
+import com.k9rosie.teampvp.game.Gamemode
 import com.k9rosie.teampvp.listeners.PlayerListener
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -14,11 +15,13 @@ class Plugin : JavaPlugin() {
     companion object {
         var instance: Plugin? = null
             private set
+
+        val gamemodes: Map<String, Gamemode> = hashMapOf()
     }
 
     override fun onEnable() {
         instance = this
-        this.server.pluginManager.callEvent(InitEvent(this))
+        server.pluginManager.callEvent(InitEvent(this))
 
         // set up hikari and connect to the database
         val hikariConfig = HikariConfig()

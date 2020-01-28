@@ -1,6 +1,5 @@
 package com.k9rosie.teampvp.game
 
-import com.k9rosie.teampvp.gamemode.Gamemode
 import com.k9rosie.teampvp.player.Player
 import com.k9rosie.teampvp.player.PlayerState
 import com.k9rosie.teampvp.team.Team
