@@ -6,7 +6,7 @@ import org.bukkit.Bukkit
 class RepeatingTask(
     var time: Long = -1,
     var delay: Long = 0,
-    val finalTask: () -> Unit = {},
+    val onEnd: () -> Unit = {},
     inline val task: () -> Unit
 ) {
     var taskId = 0
@@ -20,13 +20,12 @@ class RepeatingTask(
             task()
             time--
             if (time <= -1) {
-                finalTask()
+                onEnd()
+                stop()
             }
         }
 
-        taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(
-            Plugin.instance, runnable, delay, time
-        )
+        taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(Plugin.instance, runnable, delay, time)
     }
 
     fun pause() {
