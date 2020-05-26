@@ -1,0 +1,11 @@
+package com.k9rosie.teampvp.command
+
+import com.k9rosie.teampvp.NLS
+
+enum class ErrorCode(val errNLS: NLS) {
+    SUCCESS(NLS.COMMAND_SUCCESS),
+    UNKNOWN(NLS.COMMAND_UNKNOWN),
+    PLAYER_ONLY(NLS.COMMAND_PLAYER_ONLY),
+    NO_PERMISSION(NLS.COMMAND_NO_PERMISSION),
+    REQUIRED_ARGS(NLS.COMMAND_REQUIRED_ARGS)
+}

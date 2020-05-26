@@ -5,22 +5,18 @@ import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
 import java.io.InputStreamReader
 
-abstract class Config(private val name: String) {
-
+open class Config(private val name: String) {
     private val file = File(Plugin.instance.dataFolder, name)
-    lateinit var config: YamlConfiguration
+    lateinit var yamlConfig: YamlConfiguration
 
     init {
+        if (!file.isFile) Plugin.instance.saveResource(name, false)
+
         load()
+        yamlConfig.setDefaults(YamlConfiguration.loadConfiguration(InputStreamReader(checkNotNull(Plugin.instance.getResource(name)))))
     }
 
-    fun load() {
-        config = YamlConfiguration.loadConfiguration(file)
+    fun load() { yamlConfig = YamlConfiguration.loadConfiguration(file) }
 
-        // load our defaults from the jar into memory as a reference, in case some values are missing or invalid
-        val default = YamlConfiguration.loadConfiguration(InputStreamReader(Plugin.instance.getResource(name)))
-        config.setDefaults(default)
-    }
-
-    fun save() { if (file.isFile) config.save(file) else Plugin.instance.saveResource(name, false)}
+    fun save() { if (file.isFile) yamlConfig.save(file) else Plugin.instance.saveResource(name, false) }
 }

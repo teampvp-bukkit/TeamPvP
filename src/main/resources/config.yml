@@ -2,6 +2,8 @@
 # if you are having problems with the plugin, then enable this setting and shoot k9rosie a message with your logs
 debug: false
 
+lang: en-US
+
 # for advanced users only.
 # these settings should be left alone unless you know what you're doing
 database:
@@ -68,6 +70,13 @@ game:
 
   # the amount in seconds that players have after attacking another player to be counted as an assist kill
   assist_timer: 5
+
+  default_team:
+    name: No Team
+    color: gray
+    can_attack: false
+    can_be_damaged: false
+    friendly_fire: false
 
 effects:
   # effects that are played on a player's death

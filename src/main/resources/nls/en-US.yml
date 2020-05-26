@@ -1,0 +1,18 @@
+plugin_tag: "&e[TeamPvP] &f"
+test_string: "it works!"
+player_not_found: "Player :username could not be found."
+command_success: ""
+command_unknown: ":command wasn't recognized."
+command_player_only: "Specified command can only be executed in-game."
+command_no_permission: "You don't have permission."
+command_required_args: "Missing arguments."
+
+base_cmd_desc: "Base TeamPvP command"
+base_cmd_help_txt: "dude weed lmao"
+base_cmd_params_subcommand: "subcommand"
+
+test_cmd_desc: "A test command"
+test_cmd_help_txt: "testy test"
+
+world_nonexistent: ":world doesn't exist"
+timer_already_started: "Warning: Attempted to start DeathTimer when one has already been started. Cancelling..."
